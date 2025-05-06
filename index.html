@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Custom Profile</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+    }
+
+    video.bg {
+      position: fixed; top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      object-fit: cover; z-index: -1;
+      filter: brightness(0.4);
+    }
+
+    .container {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      perspective: 1000px;
+    }
+
+    .card {
+      width: 90%; max-width: 500px;
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(8px);
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+      text-align: center;
+      transition: transform 0.1s ease-out;
+      transform-style: preserve-3d;
+    }
+
+    .pfp {
+      width: 120px; height: 120px; border-radius: 50%;
+      object-fit: cover; border: 3px solid white;
+      margin-bottom: 15px;
+    }
+
+    .username {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .greeting {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #ccc;
+    }
+
+    .icons {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin: 20px 0;
+    }
+
+    .icons img {
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      transition: transform 0.3s ease, filter 0.3s ease;
+      filter: invert(1);
+    }
+
+    .icons img:hover {
+      transform: scale(1.2);
+      filter: invert(47%) sepia(94%) saturate(1741%) hue-rotate(180deg);
+    }
+
+    .audio-player { margin-top: 20px; }
+    audio { width: 100%; outline: none; }
+
+    .music-banner {
+      margin-top: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      padding: 10px;
+      text-align: left;
+    }
+
+    .music-banner img {
+      width: 50px;
+      height: 50px;
+      border-radius: 6px;
+      float: left;
+      margin-right: 10px;
+    }
+
+    .music-banner .track {
+      font-weight: bold;
+    }
+
+    .music-banner .artist {
+      font-size: 0.9em;
+      color: #ccc;
+    }
+
+    .experience {
+      margin-top: 30px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 14px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+      text-align: left;
+    }
+
+    .experience h3 {
+      font-size: 22px;
+      margin-bottom: 15px;
+      text-align: center;
+      color: #fff;
+      text-shadow: 0 0 4px #000;
+    }
+
+    .experience ul {
+      list-style: none;
+      padding-left: 0;
+      line-height: 1.8;
+    }
+
+    .experience li {
+      position: relative;
+      padding-left: 32px;
+      margin-bottom: 12px;
+      font-size: 15px;
+    }
+
+    .experience li::before {
+      content: "💻";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 18px;
+    }
+
+    /* Optional: Add icon hover or color enhancements */
+    .experience li:hover {
+      color: #79e0ee;
+      transition: 0.3s;
+    }
+
+    @media (max-width: 600px) {
+      .card { padding: 20px; }
+      .pfp { width: 100px; height: 100px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background video -->
+  <video class="bg" src="background.mp4" autoplay muted loop></video>
+
+  <!-- Profile container -->
+  <div class="container">
+    <div class="card" id="card">
+      <img class="pfp" src="https://placehold.co/120x120" alt="Profile Picture">
+      <div class="username">YourName</div>
+      <div class="greeting" id="greeting">Hello!</div>
+
+      <div class="icons">
+        <a href="https://discord.gg/YOUR_INVITE" target="_blank" title="Discord">
+          <img src="icons/discord.svg" alt="Discord Icon">
+        </a>
+        <a href="https://www.roblox.com/users/YOURID/profile" target="_blank" title="Roblox">
+          <img src="icons/roblox.svg" alt="Roblox Icon">
+        </a>
+        <a href="https://github.com/YOURUSERNAME" target="_blank" title="GitHub">
+          <img src="icons/github.svg" alt="GitHub Icon">
+        </a>
+      </div>
+
+      <!-- Music banner -->
+      <div class="music-banner">
+        <img src="https://i.scdn.co/image/ab67616d00004851ed50c8fe9503fd8d73d82f9f" alt="Album Art">
+        <div class="track">Ezio's Family</div>
+        <div class="artist">Ubisoft</div>
+      </div>
+
+      <div class="audio-player">
+        <audio src="music.mp4" autoplay loop controls></audio>
+      </div>
+
+      <!-- Stylish Coding Experience -->
+      <div class="experience">
+        <h3>💡 Coding Experience</h3>
+        <ul>
+          <li>Proficient in Python, JavaScript, and HTML/CSS</li>
+          <li>Experience with REST APIs and Discord bot development</li>
+          <li>Familiar with Roblox scripting (Luau)</li>
+          <li>Built automated tools using multithreading and proxies</li>
+          <li>Frontend development with custom animations and UI</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // Mouse movement 3D tilt effect
+    const card = document.getElementById('card');
+    document.addEventListener('mousemove', (e) => {
+      const x = (window.innerWidth / 2 - e.pageX) / 40;
+      const y = (window.innerHeight / 2 - e.pageY) / 40;
+      card.style.transform = `rotateY(${-x}deg) rotateX(${y}deg)`;
+    });
+
+    // Time-based greeting
+    const greeting = document.getElementById("greeting");
+    const hour = new Date().getHours();
+    if (hour < 12) greeting.textContent = "Good morning!";
+    else if (hour < 18) greeting.textContent = "Good afternoon!";
+    else greeting.textContent = "Good evening!";
+  </script>
+
+</body>
+</html>
